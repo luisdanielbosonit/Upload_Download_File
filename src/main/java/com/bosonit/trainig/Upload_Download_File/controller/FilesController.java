@@ -30,22 +30,6 @@ public class FilesController {
     public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile[] files,
                                                       RedirectAttributes redirectAttributes) {
 
-//        serviceFile.save(file);
-//        redirectAttributes.addFlashAttribute("message",
-//                "You successfully uploaded " + file.getOriginalFilename() + "!");
-//
-//        return "redirect:/";
-
-//        String message = "";
-//        try {
-//            serviceFile.save(file);
-//
-//            message = "Uploaded the file successfully: " + file.getOriginalFilename();
-//            return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
-//        } catch (Exception e) {
-//            message = "Could not upload the file: " + file.getOriginalFilename() + "!";
-//            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessage(message));
-
         String message="Archivo guardado";
         try {
         List<String> filename=new ArrayList<>();
