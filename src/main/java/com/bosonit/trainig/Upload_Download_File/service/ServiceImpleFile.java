@@ -44,18 +44,20 @@ public class ServiceImpleFile implements ServiceFile {
 
 
     @Override
-    public File store(MultipartFile file) throws Exception {
+    public File store(MultipartFile file, String type) throws Exception {
         String fileName2= StringUtils.cleanPath(file.getOriginalFilename().replace(" ",""));
 
         Path rutaArchivo= Paths.get("uploads").resolve(fileName2).toAbsolutePath();
 
-
+        String fileType= StringUtils.cleanPath(file.getContentType());
+        String[] splitfile = fileType.split("/");
+        String arraysFile = splitfile[1];
 
         String fileDownloadUri = ServletUriComponentsBuilder
                 .fromCurrentContextPath().path("files/").path(fileName2).toUriString();
 
         Files.copy(file.getInputStream(),rutaArchivo);
-        File filedb= new File(fileName2,file.getContentType(),file.getBytes(),fileDownloadUri,LocalDateTime.now());
+        File filedb= new File(fileName2,fileType,file.getBytes(),fileDownloadUri,LocalDateTime.now());
 
         return fileRespository.save(filedb);
 

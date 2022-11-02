@@ -11,7 +11,7 @@ public interface ServiceFile {
 
     public void init(); //ok
     public void deleteAll();
-    public File store(MultipartFile file) throws Exception;
+    public File store(MultipartFile file, String type) throws Exception;
     public Resource load(String filename);
 
 

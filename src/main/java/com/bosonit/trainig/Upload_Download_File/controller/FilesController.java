@@ -29,13 +29,13 @@ public class FilesController {
 
 
 
-    @PostMapping("/upload")
+    @PostMapping("/upload/{type}")
 
-    public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file) {
+    public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file,@PathVariable String type) {
 
         String message = "";
         try {
-            serviceFile.store(file);
+            serviceFile.store(file,type);
             message = "Uploaded the file successfully: " + file.getOriginalFilename();
             return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
         } catch (Exception e) {
