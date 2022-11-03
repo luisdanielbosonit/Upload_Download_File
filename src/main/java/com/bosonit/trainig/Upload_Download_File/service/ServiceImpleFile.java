@@ -52,7 +52,9 @@ public class ServiceImpleFile implements ServiceFile {
         String fileType= StringUtils.cleanPath(file.getContentType());
         String[] splitfile = fileType.split("/");
         String arraysFile = splitfile[1];
-
+        if(!arraysFile.equals(type)){
+            throw new RuntimeException();
+        }
         String fileDownloadUri = ServletUriComponentsBuilder
                 .fromCurrentContextPath().path("files/").path(fileName2).toUriString();
 
